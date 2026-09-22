@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Local Claude / preview tooling
+.claude/
+.cache/
+
+# internal working notes — never publish
+PROJECT-NOTES.md
+metzler-content-briefing.md
+*-briefing.md
+*-playbook.md
+*-spec.md
+.claude/
