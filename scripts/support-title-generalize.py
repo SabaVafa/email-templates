@@ -2,26 +2,31 @@
 """
 support-title-generalize.py  (idempotent)
 
-Canonical support block: the heading "Fragen zu Ihrer Bestellung?" assumes every
-email is about an order, which is wrong for account / password / newsletter /
-contact / Kaufberater / payment-info templates. Replace with a context-neutral,
-formal heading that fits all of them, keeping the "Wir antworten Ihnen
-persoenlich." subtitle.
+Canonical support block heading. The original "Fragen zu Ihrer Bestellung?"
+assumed every email is about an order, which is wrong for account / password /
+newsletter / contact / Kaufberater / payment-info templates. Final heading is the
+natural, native-German, context-neutral "Haben Sie noch Fragen?" (the "noch" flows
+after the email's content). Subtitle "Wir antworten Ihnen persoenlich." unchanged.
 
-Re-runnable: only touches files still carrying the old heading.
+Re-runnable: maps any known prior heading to the final one.
 """
 import pathlib
 
 TEMPLATES = pathlib.Path(__file__).resolve().parent.parent / "templates"
-OLD = '<div class="support-title">Fragen zu Ihrer Bestellung?</div>'
-NEW = '<div class="support-title">Haben Sie Fragen?</div>'
+NEW = '<div class="support-title">Haben Sie noch Fragen?</div>'
+OLD_VARIANTS = [
+    '<div class="support-title">Fragen zu Ihrer Bestellung?</div>',
+    '<div class="support-title">Haben Sie Fragen?</div>',
+]
 
 changed = []
 for f in sorted(TEMPLATES.glob("*.html")):
     text = f.read_text(encoding="utf-8")
-    if OLD not in text:
-        continue
-    f.write_text(text.replace(OLD, NEW), encoding="utf-8")
-    changed.append(f.name)
+    new = text
+    for old in OLD_VARIANTS:
+        new = new.replace(old, NEW)
+    if new != text:
+        f.write_text(new, encoding="utf-8")
+        changed.append(f.name)
 
 print(f"updated ({len(changed)}): {', '.join(changed) or '-'}")
