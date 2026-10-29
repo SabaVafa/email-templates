@@ -681,25 +681,14 @@
               returned by the advisor, one row each. Map from the plugin result set:
               product name ({$name}), Farbe (colour), Preis (localised, "ab" prefix for variant
               products), Produkt-URL, Produktbild. Cap at 3; render one row per result.
-              The "Ihre Auswahl" recap echoes the advisor answers — map each token from the
-              stored criteria. Keep any {if}/{foreach} INSIDE a <td> (never loose between <td>s)
-              to avoid foster-parented Smarty tags in non-Smarty previews. Sample data is placeholder
+              Keep any {if}/{foreach} INSIDE a <td> (never loose between <td>s) to avoid
+              foster-parented Smarty tags in non-Smarty previews. Sample data is placeholder
               (mirrors a real Produktberater result: SDM10X / VDM10 2.0 Horizon / SDM10H).
             -->
             <!-- ──────────────────────── -->
             <tr>
               <td class="section" style="padding-top:28px; padding-bottom:24px; border-bottom:none;">
                 <h2 class="section-label">F&uuml;r Sie ausgew&auml;hlt</h2>
-
-                <!-- Ihre Auswahl — recap of the advisor answers (DEV: map each token from stored criteria) -->
-                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px; margin:0 0 20px;">
-                  <tr>
-                    <td style="padding:12px 16px;">
-                      <div style="font-size:12px; font-weight:700; color:#767676; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:5px;">Ihre Auswahl</div>
-                      <div style="font-size:13px; color:#1a1a1a; line-height:1.6;">Neubau &middot; Einfamilienhaus &middot; Video &middot; RFID &middot; Digitales Namensschild &middot; Anthrazit</div>
-                    </td>
-                  </tr>
-                </table>
 
                 <!-- up to 3 product recommendations — house product-entry pattern (consistent with order-confirmation) -->
                 <div class="order-table-wrap">
