@@ -545,7 +545,7 @@
 
 <!-- Hidden preheader text -->
 <div class="preheader">
-  Ihre pers&ouml;nliche Empfehlung aus dem Kaufberater &ndash; jetzt ansehen.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+  Ihre pers&ouml;nliche Empfehlung aus dem Produktberater &ndash; jetzt ansehen.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
 </div>
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -602,12 +602,12 @@
             <tr>
               <td class="hero" bgcolor="#f7f9f7">
 
-                <div class="hero-badge">Kaufberatung</div>
+                <div class="hero-badge">Produktberater</div>
 
                 <h1 class="hero-title">Ihre pers&ouml;nliche Empfehlung steht bereit</h1>
 
                 <p class="hero-subtitle">
-                  Auf Basis Ihrer Angaben im Kaufberater haben wir passende Modelle f&uuml;r Sie ausgew&auml;hlt.
+                  Auf Basis Ihrer Angaben im Produktberater haben wir passende Modelle f&uuml;r Sie ausgew&auml;hlt.
                 </p>
 
               </td>
@@ -616,81 +616,86 @@
             <!-- ──────────────────────── -->
             <!-- EMPFEHLUNG                  -->
             <!--
-              DEV (JTL-Shop 5 · Kaufberater-Plugin): the grid shows UP TO THREE products
-              returned by the advisor. Map each card from the plugin result set:
-              product name, Farbe (colour), Preis (localised), Produkt-URL, Produktbild.
-              Cap at 3. If fewer than 3 results, drop the unused card(s) AND their sibling padding
-              so the rest stay centred (1 = single centred card, 2 = two centred).
-              Keep any {if}/{foreach} INSIDE a <td> (never as loose text between <td>s) to
-              avoid foster-parented Smarty tags in non-Smarty previews. Sample data is placeholder.
+              DEV (JTL-Shop 5 · Produktberater-Plugin): the list shows UP TO THREE products
+              returned by the advisor, one row each. Map from the plugin result set:
+              product name ({$name}), Farbe (colour), Preis (localised, "ab" prefix for variant
+              products), Produkt-URL, Produktbild. Cap at 3; render one row per result.
+              The "Ihre Auswahl" recap echoes the advisor answers — map each token from the
+              stored criteria. Keep any {if}/{foreach} INSIDE a <td> (never loose between <td>s)
+              to avoid foster-parented Smarty tags in non-Smarty previews. Sample data is placeholder
+              (mirrors a real Produktberater result: SDM10X / VDM10 2.0 Horizon / SDM10H).
             -->
             <!-- ──────────────────────── -->
             <tr>
               <td class="section" style="padding-top:28px; padding-bottom:24px; border-bottom:none;">
                 <h2 class="section-label">F&uuml;r Sie ausgew&auml;hlt</h2>
 
-                <p style="font-size:14px; color:#555; line-height:1.7; margin:0 0 18px;">
-                  Diese Modelle passen am besten zu Ihren Angaben im Kaufberater.
+                <p style="font-size:14px; color:#555; line-height:1.7; margin:0 0 16px;">
+                  Diese Modelle passen am besten zu Ihren Angaben im Produktberater.
                 </p>
 
-                <!-- up to 3-product recommendation grid -->
-                <table class="upsell-row" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate; border-spacing:0;">
+                <!-- Ihre Auswahl — recap of the advisor answers (DEV: map each token from stored criteria) -->
+                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px; margin:0 0 20px;">
                   <tr>
-
-                    <td class="upsell-cell" valign="top" style="width:33.33%; padding-right:8px;">
-                      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px;">
-                        <tr>
-                          <td style="padding:14px;">
-                            <div style="font-size:0; line-height:0; border-radius:4px; overflow:hidden; background:#ffffff; margin-bottom:12px;">
-                              <img src="../assets/product-image.jpg" alt="" width="100%" style="display:block; width:100%; height:auto;" />
-                            </div>
-                            <div style="font-size:13px; font-weight:700; color:#1a1a1a; line-height:1.35; margin-bottom:4px; min-height:36px;">Sprechanlage VDM10</div>
-                            <div style="font-size:12px; color:#767676; margin-bottom:10px;">RAL 7016 Anthrazit</div>
-                            <div style="font-size:14px; font-weight:700; color:#1a1a1a; margin-bottom:10px;">249,00&nbsp;&euro;</div>
-                            <a href="{$empfehlung1URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
-                          </td>
-                        </tr>
-                      </table>
+                    <td style="padding:12px 16px;">
+                      <div style="font-size:12px; font-weight:700; color:#767676; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:5px;">Ihre Auswahl</div>
+                      <div style="font-size:13px; color:#1a1a1a; line-height:1.6;">Neubau &middot; Einfamilienhaus &middot; Video &middot; RFID-&Ouml;ffnung &middot; Digitales Namensschild &middot; Anthrazit</div>
                     </td>
+                  </tr>
+                </table>
 
-                    <td class="upsell-cell" valign="top" style="width:33.33%; padding:0 4px;">
-                      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px;">
-                        <tr>
-                          <td style="padding:14px;">
-                            <div style="font-size:0; line-height:0; border-radius:4px; overflow:hidden; background:#ffffff; margin-bottom:12px;">
-                              <img src="../assets/product-image.jpg" alt="" width="100%" style="display:block; width:100%; height:auto;" />
-                            </div>
-                            <div style="font-size:13px; font-weight:700; color:#1a1a1a; line-height:1.35; margin-bottom:4px; min-height:36px;">Sprechanlage XDM10</div>
-                            <div style="font-size:12px; color:#767676; margin-bottom:10px;">RAL 7016 Anthrazit</div>
-                            <div style="font-size:14px; font-weight:700; color:#1a1a1a; margin-bottom:10px;">299,00&nbsp;&euro;</div>
-                            <a href="{$empfehlung2URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
-                          </td>
-                        </tr>
-                      </table>
+                <!-- up to 3 product recommendations — one row each (vertical list suits long names + premium items) -->
+                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px; margin:0 0 10px;">
+                  <tr>
+                    <td width="98" valign="top" style="padding:14px;">
+                      <div style="width:70px; height:70px; border-radius:4px; overflow:hidden; background:#ffffff; border:1px solid #efefef; font-size:0; line-height:0;">
+                        <img src="../assets/product-image.jpg" alt="" width="70" height="70" style="display:block; width:70px; height:70px; object-fit:cover;" />
+                      </div>
                     </td>
-
-                    <td class="upsell-cell" valign="top" style="width:33.33%; padding-left:8px;">
-                      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px;">
-                        <tr>
-                          <td style="padding:14px;">
-                            <div style="font-size:0; line-height:0; border-radius:4px; overflow:hidden; background:#ffffff; margin-bottom:12px;">
-                              <img src="../assets/product-image.jpg" alt="" width="100%" style="display:block; width:100%; height:auto;" />
-                            </div>
-                            <div style="font-size:13px; font-weight:700; color:#1a1a1a; line-height:1.35; margin-bottom:4px; min-height:36px;">Sprechanlage SDM10</div>
-                            <div style="font-size:12px; color:#767676; margin-bottom:10px;">RAL 7016 Anthrazit</div>
-                            <div style="font-size:14px; font-weight:700; color:#1a1a1a; margin-bottom:10px;">189,00&nbsp;&euro;</div>
-                            <a href="{$empfehlung3URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
-                          </td>
-                        </tr>
-                      </table>
+                    <td valign="top" style="padding:14px 16px 14px 0;">
+                      <div style="font-size:14px; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:4px;">Metzler SDM10X &ndash; Video-T&uuml;rsprechanlage mit Gesichtserkennung</div>
+                      <div style="font-size:12px; color:#767676; margin-bottom:8px;">RAL 7016 Anthrazit</div>
+                      <div style="font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:8px;">ab 1.490,00&nbsp;&euro;</div>
+                      <a href="{$empfehlung1URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
                     </td>
+                  </tr>
+                </table>
 
+                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px; margin:0 0 10px;">
+                  <tr>
+                    <td width="98" valign="top" style="padding:14px;">
+                      <div style="width:70px; height:70px; border-radius:4px; overflow:hidden; background:#ffffff; border:1px solid #efefef; font-size:0; line-height:0;">
+                        <img src="../assets/product-image.jpg" alt="" width="70" height="70" style="display:block; width:70px; height:70px; object-fit:cover;" />
+                      </div>
+                    </td>
+                    <td valign="top" style="padding:14px 16px 14px 0;">
+                      <div style="font-size:14px; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:4px;">Metzler VDM10 2.0 Horizon &ndash; modulare Video-T&uuml;rsprechanlage</div>
+                      <div style="font-size:12px; color:#767676; margin-bottom:8px;">RAL 7016 Anthrazit</div>
+                      <div style="font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:8px;">ab 999,00&nbsp;&euro;</div>
+                      <a href="{$empfehlung2URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
+                    </td>
+                  </tr>
+                </table>
+
+                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px;">
+                  <tr>
+                    <td width="98" valign="top" style="padding:14px;">
+                      <div style="width:70px; height:70px; border-radius:4px; overflow:hidden; background:#ffffff; border:1px solid #efefef; font-size:0; line-height:0;">
+                        <img src="../assets/product-image.jpg" alt="" width="70" height="70" style="display:block; width:70px; height:70px; object-fit:cover;" />
+                      </div>
+                    </td>
+                    <td valign="top" style="padding:14px 16px 14px 0;">
+                      <div style="font-size:14px; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:4px;">Metzler SDM10H &ndash; Video-T&uuml;rsprechanlage mit beleuchteter Hausnummer</div>
+                      <div style="font-size:12px; color:#767676; margin-bottom:8px;">RAL 7016 Anthrazit</div>
+                      <div style="font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:8px;">ab 1.590,00&nbsp;&euro;</div>
+                      <a href="{$empfehlung3URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
+                    </td>
                   </tr>
                 </table>
 
                 <!-- Consent / justification (user requested the recommendation by email) -->
                 <p style="font-size:12px; color:#767676; line-height:1.6; margin:20px 0 0;">
-                  Sie erhalten diese E-Mail, weil Sie im Kaufberater um eine pers&ouml;nliche Empfehlung per E-Mail gebeten haben.
+                  Sie erhalten diese E-Mail, weil Sie im Produktberater um eine pers&ouml;nliche Empfehlung per E-Mail gebeten haben.
                 </p>
 
               </td>
