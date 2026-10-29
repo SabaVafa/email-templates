@@ -279,6 +279,67 @@
       line-height: 1.6;
     }
 
+    /* ── PRODUCT ENTRY (shared pattern — consistent with order-confirmation) ── */
+    .order-table { width: 100%; border-collapse: collapse; }
+
+    .order-th {
+      font-size: 12px;
+      font-weight: 600;
+      color: #767676;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0 0 10px;
+      border-bottom: 1px solid #ebebeb;
+      text-align: left;
+    }
+
+    .order-th-qty { text-align: center; width: 56px; }
+    .order-th-price { text-align: right; width: 90px; }
+
+    .order-td {
+      padding: 14px 0;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: top;
+    }
+
+    .order-td-qty {
+      padding: 14px 0;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: top;
+      text-align: center;
+      width: 56px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #555;
+    }
+
+    .order-td-price {
+      padding: 14px 0;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: top;
+      text-align: right;
+      width: 90px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    .order-last-td { border-bottom: none !important; }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.45;
+    }
+
+    .product-sku {
+      font-size: 12px;
+      color: #767676;
+      margin-top: 3px;
+    }
+
 
     /* ── DARK MODE ── */
     @media (prefers-color-scheme: dark) {
@@ -640,54 +701,56 @@
                   </tr>
                 </table>
 
-                <!-- up to 3 product recommendations — one row each (vertical list suits long names + premium items) -->
-                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px; margin:0 0 10px;">
-                  <tr>
-                    <td width="98" valign="top" style="padding:14px;">
-                      <div style="width:70px; height:70px; border-radius:4px; overflow:hidden; background:#ffffff; border:1px solid #efefef; font-size:0; line-height:0;">
-                        <img src="../assets/product-image.jpg" alt="" width="70" height="70" style="display:block; width:70px; height:70px; object-fit:cover;" />
-                      </div>
-                    </td>
-                    <td valign="top" style="padding:14px 16px 14px 0;">
-                      <div style="font-size:14px; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:4px;">Metzler SDM10X &ndash; Video-T&uuml;rsprechanlage mit Gesichtserkennung</div>
-                      <div style="font-size:12px; color:#767676; margin-bottom:8px;">RAL 7016 Anthrazit</div>
-                      <div style="font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:8px;">ab 1.490,00&nbsp;&euro;</div>
-                      <a href="{$empfehlung1URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
-                    </td>
-                  </tr>
-                </table>
+                <!-- up to 3 product recommendations — house product-entry pattern (consistent with order-confirmation) -->
+                <div class="order-table-wrap">
+                <table class="order-table" cellpadding="0" cellspacing="0">
+                  <tbody>
 
-                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px; margin:0 0 10px;">
-                  <tr>
-                    <td width="98" valign="top" style="padding:14px;">
-                      <div style="width:70px; height:70px; border-radius:4px; overflow:hidden; background:#ffffff; border:1px solid #efefef; font-size:0; line-height:0;">
-                        <img src="../assets/product-image.jpg" alt="" width="70" height="70" style="display:block; width:70px; height:70px; object-fit:cover;" />
-                      </div>
-                    </td>
-                    <td valign="top" style="padding:14px 16px 14px 0;">
-                      <div style="font-size:14px; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:4px;">Metzler VDM10 2.0 Horizon &ndash; modulare Video-T&uuml;rsprechanlage</div>
-                      <div style="font-size:12px; color:#767676; margin-bottom:8px;">RAL 7016 Anthrazit</div>
-                      <div style="font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:8px;">ab 999,00&nbsp;&euro;</div>
-                      <a href="{$empfehlung2URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
-                    </td>
-                  </tr>
-                </table>
+                    <tr>
+                      <td class="order-td" style="width:72px; padding-right:14px; vertical-align:middle;">
+                        <div style="width:58px; height:58px; overflow:hidden; border-radius:4px; border:1px solid #efefef; background-color:#f5f5f5; font-size:0; line-height:0;">
+                          <img src="../assets/product-image.jpg" alt="" width="58" height="58" style="display:block; width:58px; height:58px; object-fit:cover;" />
+                        </div>
+                      </td>
+                      <td class="order-td" style="padding-right:12px;">
+                        <div class="product-name">Metzler SDM10X &ndash; Video-T&uuml;rsprechanlage mit Gesichtserkennung</div>
+                        <div class="product-sku">RAL 7016 Anthrazit</div>
+                        <a href="{$empfehlung1URL}" target="_blank" style="display:inline-block; margin-top:8px; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
+                      </td>
+                      <td class="order-td-price">ab 1.490,00&nbsp;&euro;</td>
+                    </tr>
 
-                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f7faf7; border:1px solid #e0ebe3; border-radius:6px;">
-                  <tr>
-                    <td width="98" valign="top" style="padding:14px;">
-                      <div style="width:70px; height:70px; border-radius:4px; overflow:hidden; background:#ffffff; border:1px solid #efefef; font-size:0; line-height:0;">
-                        <img src="../assets/product-image.jpg" alt="" width="70" height="70" style="display:block; width:70px; height:70px; object-fit:cover;" />
-                      </div>
-                    </td>
-                    <td valign="top" style="padding:14px 16px 14px 0;">
-                      <div style="font-size:14px; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:4px;">Metzler SDM10H &ndash; Video-T&uuml;rsprechanlage mit beleuchteter Hausnummer</div>
-                      <div style="font-size:12px; color:#767676; margin-bottom:8px;">RAL 7016 Anthrazit</div>
-                      <div style="font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:8px;">ab 1.590,00&nbsp;&euro;</div>
-                      <a href="{$empfehlung3URL}" target="_blank" style="display:inline-block; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td class="order-td" style="width:72px; padding-right:14px; vertical-align:middle;">
+                        <div style="width:58px; height:58px; overflow:hidden; border-radius:4px; border:1px solid #efefef; background-color:#f5f5f5; font-size:0; line-height:0;">
+                          <img src="../assets/product-image.jpg" alt="" width="58" height="58" style="display:block; width:58px; height:58px; object-fit:cover;" />
+                        </div>
+                      </td>
+                      <td class="order-td" style="padding-right:12px;">
+                        <div class="product-name">Metzler VDM10 2.0 Horizon &ndash; modulare Video-T&uuml;rsprechanlage</div>
+                        <div class="product-sku">RAL 7016 Anthrazit</div>
+                        <a href="{$empfehlung2URL}" target="_blank" style="display:inline-block; margin-top:8px; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
+                      </td>
+                      <td class="order-td-price">ab 999,00&nbsp;&euro;</td>
+                    </tr>
+
+                    <tr>
+                      <td class="order-td order-last-td" style="width:72px; padding-right:14px; vertical-align:middle;">
+                        <div style="width:58px; height:58px; overflow:hidden; border-radius:4px; border:1px solid #efefef; background-color:#f5f5f5; font-size:0; line-height:0;">
+                          <img src="../assets/product-image.jpg" alt="" width="58" height="58" style="display:block; width:58px; height:58px; object-fit:cover;" />
+                        </div>
+                      </td>
+                      <td class="order-td order-last-td" style="padding-right:12px;">
+                        <div class="product-name">Metzler SDM10H &ndash; Video-T&uuml;rsprechanlage mit beleuchteter Hausnummer</div>
+                        <div class="product-sku">RAL 7016 Anthrazit</div>
+                        <a href="{$empfehlung3URL}" target="_blank" style="display:inline-block; margin-top:8px; font-size:12px; color:#015253; font-weight:600; text-decoration:none; border-bottom:1px solid #015253;">Im Shop ansehen</a>
+                      </td>
+                      <td class="order-td-price order-last-td">ab 1.590,00&nbsp;&euro;</td>
+                    </tr>
+
+                  </tbody>
                 </table>
+                </div>
 
                 <!-- Consent / justification (user requested the recommendation by email) -->
                 <p style="font-size:12px; color:#767676; line-height:1.6; margin:20px 0 0;">
