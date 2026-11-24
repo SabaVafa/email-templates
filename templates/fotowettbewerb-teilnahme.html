@@ -295,10 +295,11 @@
     {$bestellnummer}   — order number the customer entered (validates eligibility)
     {$anzahlFotos}     — number of photos uploaded in this submission
                          (optional — drop the row if the backend has no count)
-    {$galerieURL}      — link to the public Gewinnergalerie (CTA target)
 
-  Note (public portfolio): all links are guarded (href="#" data-pf-ext="1").
-  In production, wire the CTA href to {$galerieURL}.
+  CTA "Zur Gewinnergalerie" links to the Fotowettbewerb prototype gallery
+  anchor (https://sabavafa.github.io/kundenwettbewerb/#galerie). DEV: swap to
+  the production gallery URL once the new Fotowettbewerb page is live — do NOT
+  point it at the current live shop.
 -->
 
 <table id="bodyTable" width="100%" cellpadding="0" cellspacing="0" role="presentation" bgcolor="#f2f4f2">
@@ -383,10 +384,12 @@
                     </td>
                   </tr>
 
-                  <!-- Row 2: CTA (production: href="{$galerieURL}") -->
+                  <!-- Row 2: CTA -> Fotowettbewerb prototype gallery anchor (#galerie).
+                       DEV: swap to the production gallery URL once the new Fotowettbewerb
+                       page is live; do NOT point it at the current live shop. -->
                   <tr>
                     <td style="padding:16px 22px; background-color:#f7f9f7; text-align:center;">
-                      <a href="#" data-pf-ext="1" tabindex="-1" class="btn-primary" style="display:inline-block; background-color:#015253; color:#ffffff; font-family:'Montserrat','Helvetica Neue',Arial,sans-serif; font-size:14px; font-weight:600; letter-spacing:0.5px; padding:13px 30px; border-radius:5px; text-decoration:none; text-align:center;">Zur Gewinnergalerie</a>
+                      <a href="https://sabavafa.github.io/kundenwettbewerb/#galerie" target="_blank" class="btn-primary" style="display:inline-block; background-color:#015253; color:#ffffff; font-family:'Montserrat','Helvetica Neue',Arial,sans-serif; font-size:14px; font-weight:600; letter-spacing:0.5px; padding:13px 30px; border-radius:5px; text-decoration:none; text-align:center;">Zur Gewinnergalerie</a>
                     </td>
                   </tr>
 
